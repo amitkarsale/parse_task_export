@@ -28,7 +28,7 @@ class ParseHtml
 		@files_to_parse.each do |file|
 			begin
 				task = Nokogiri::HTML(open("/home/akarsale/Downloads/task-export-1485457064/tmp/task-export20170126-41886-cy5u04/"+file))
-				@error_msgs << task.xpath('//ul[@class="plan-step"]/li/div[@class="action"]/pre').last.children.first.text
+				@error_msgs << task.xpath('//ul[@class="plan-step"]/li/div[@class="action"]/pre').last.children.first.text.split(/\n{2}|\n\/opt/)[0]
 			rescue
 				next
 			end
